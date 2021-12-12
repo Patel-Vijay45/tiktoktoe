@@ -1,0 +1,212 @@
+        $primary_color:#000000;
+        $border-color:#ffffff;
+        $color1:green;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {}
+        
+        @keyframes turn {
+            0% {}
+            25% {
+                box-shadow: 8px 8px 10px #000000;
+                transform: scale(1.4);
+            }
+            50% {
+                box-shadow: none;
+                transform: scale(1);
+            }
+            75% {
+                box-shadow: 8px 8px 10px #000000;
+                transform: scale(1.4);
+            }
+            100% {
+                box-shadow: none;
+                transform: scale(1);
+            }
+        }
+        
+        .body {
+            background: $primary_color;
+            // height: 200vh;
+            // width: 200vw;
+            overflow: scroll;
+            margin-top: 30px;
+            overflow: scroll;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            .left,
+            .right {
+                width: 400px;
+                height: 600px;
+                background: $border-color;
+            }
+            .left {
+                .timer {
+                    margin: 30px auto;
+                    height: 4.1rem;
+                    // width: 40%;
+                    // background: #000;  
+                    text-align: center;
+                    overflow: hidden;
+                    span {
+                        display: block;
+                        font-size: 4rem;
+                    }
+                    .box {
+                        animation: timer both 5s linear infinite;
+                    }
+                    @keyframes timer {
+                        0% {
+                            transform: translateY(-0rem);
+                        }
+                        85% {
+                            transform: translateY(-18rem);
+                        }
+                        100% {
+                            transform: translateY(-0rem);
+                        }
+                    }
+                }
+                .sign {
+                    display: flex;
+                    justify-content: space-evenly;
+                    width: 90%;
+                    margin: auto;
+                    .circle-parent {
+                        display: inline-block;
+                        .circle-child {
+                            width: 80px;
+                            height: 80px;
+                            border: 5px solid $primary_color;
+                            border-radius: 50%;
+                            animation: 5s infinite linear;
+                        }
+                    }
+                    .cross-parent {
+                        padding: 0;
+                        width: 80px;
+                        height: 80px;
+                        display: inline-block;
+                        position: relative;
+                        animation: 5s infinite linear;
+                        .cross-child1,
+                        .cross-child2 {
+                            position: absolute;
+                            top: 50%;
+                            width: 110%;
+                            height: 5px;
+                            background: $primary_color;
+                            transform: rotate(45deg);
+                        }
+                        .cross-child2 {
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+                .btn-parent {
+                    margin: 70px auto;
+                    width: 90%;
+                    // background: red;
+                    height: 80px;
+                    .btn {
+                        cursor: pointer;
+                        width: 60%;
+                        // height: 50px;
+                        margin: auto;
+                        border-radius: 20px;
+                        // border: 2px solid red;
+                        box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, 0.50), -6px -6px 10px 0 rgba(0, 0, 0, 0.2);
+                        p {
+                            font-size: 3rem;
+                            text-align: center;
+                        }
+                    }
+                    .inside {
+                        box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.50), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.2);
+                    }
+                }
+            }
+            .frame {
+                font-size: 0;
+                height: 650px;
+                width: 650px;
+                .box {
+                    display: inline-block;
+                    width: 33.33333333%;
+                    height: 33.333333333%;
+                    .container {
+                        position: relative;
+                        border-right: 5px solid $border-color;
+                        border-bottom: 5px solid $border-color;
+                        filter: blur(2px);
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        .circle {
+                            width: 1px;
+                            height: 70%;
+                            border-radius: 50%;
+                            position: absolute;
+                            animation: 1s both linear;
+                            // animation-name: border;
+                        }
+                        @keyframes border {
+                            0% {
+                                width: 1px;
+                                box-shadow: none;
+                            }
+                            100% {
+                                width: 70%;
+                                box-shadow: 8px 8px 10px $color1, -8px -8px 10px $color1, -8px 8px 10px $color1, 8px -8px 10px $color1;
+                            }
+                        }
+                        .cross {
+                            position: absolute;
+                            width: 70%;
+                            height: 10px;
+                            background: transparent;
+                            animation: 2s both;
+                            // animation-name: border;
+                        }
+                        #cross1 {
+                            transform: rotate(45deg);
+                        }
+                        #cross2 {
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+                 :nth-child(7) .container,
+                 :nth-child(8) .container,
+                 :nth-child(9) .container {
+                    border-bottom: none;
+                }
+                 :nth-child(3) .container,
+                 :nth-child(6) .container,
+                 :nth-child(9) .container {
+                    border-right: none;
+                }
+            }
+        }
+        
+        @media screen and (max-width:900px) {
+            .body {
+                flex-direction: column;
+            }
+        }
+        
+        @media screen and (max-width:600px) {
+            .body {
+                .frame {
+                    width: 100vw;
+                }
+            }
+        }
